@@ -16,32 +16,26 @@ def balasan():
 	chat=request.form.get('Body')
 	perintah=chat.split(' ')
 	if perintah[0].lower() in 'yt':
-		dat=requests.get('https://krypton-api.herokuapp.com/api/yt',params={'url':perintah[1]}).text
-		print(dat)
-		js=json.loads(dat)
-		url=[]
-		print(dat)
-		if perintah[1] and perintah[2]:
+		if perintah[1]:
+			dat=requests.get('https://krypton-api.herokuapp.com/api/yt',params={'url':perintah[1]}).text
+			print(dat)
+			js=json.loads(dat)
+			url=[]
 			if js['status'] == 'error':
 				balas.message('error')
 				return str(balas)
 			else:
 				for i in js['data']:
-					if i['subtype'] == 'mp4' and i['res'] == perintah[2]:
-						url.append(i['url'])
-				if url:
-					md=balas.message(js['judul'])
-					md.media(url[0])
-					return str(balas)
-				else:
-					balas.message('gagal🙁')
-					return str(balas)
-		else:
-			balas.message('yt <url> <kualitas>\nkualitas:\n    144p\n    240p\n    360p')
-			return str(balas)
+					if i['subtype'] == 'mp4' and i['type'] == 'video':
+						url.append('mime: %s/%s\nkualitas: %s\nurl: %s\n'%(i['type'],i['subtype'],i['res'], i['url']))
+				ff=('judul: %s\n'%(js['judul'])+''.join(url))
+				print(ff)
+				balas.message('di tutup')
+				return str(balas)
 	elif perintah[0].lower() in ['yt2mp3','ytmp3']:
 		if perintah[1]:
 			dat1=json.loads(requests.get('https://krypton-api.herokuapp.com/api/yt2mp3',params={'url':perintah[1]}).text)
+			print(str(dat1))
 			if dat1['status'] =='error':
 				balas.message('error🙁')
 				return str(balas)
