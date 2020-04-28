@@ -148,10 +148,9 @@ Perintah :
          Wikipedia <kata>
          About
          Lapor
-         yt <url> #download video dari Yt
-         yt2mp3 <url> #konversi ke mp3
+         yt <url> <kualitas>
+         yt2mp3 <url>
          QrGenerator <text>
-         
 '''
 			return arg
 		elif perintah[0].lower() == 'wikipedia':
