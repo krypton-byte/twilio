@@ -59,9 +59,10 @@ def balasan():
 		else:
 			balas.message('Qr-Generator <text>')
 			return str(balas)
-	elif chat.split(' ')[0].lower() in ['p','f']:
+	elif chat.split(' ')[0].lower() in ['p','₱']:
+		lis=['images','images1','images2','images3']
 		md=balas.message(' ')
-		md.media('http://papaclash.com/sticker/images.jpeg')
+		md.media('http://papaclash.com/sticker/%s.jpeg'(random.choice(lis)))
 		return str(balas)
 	elif perintah[0].lower() == 'tts':
 		jum=len(perintah[0])
