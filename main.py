@@ -62,7 +62,7 @@ def balasan():
 	elif chat.split(' ')[0].lower() in ['p','₱']:
 		lis=['images','images1','images2','images3']
 		md=balas.message(' ')
-		md.media('http://papaclash.com/sticker/%s.jpeg'(random.choice(lis)))
+		md.media('http://papaclash.com/sticker/%s.jpeg'%(random.choice(lis)))
 		return str(balas)
 	elif perintah[0].lower() == 'tts':
 		jum=len(perintah[0])
