@@ -150,7 +150,7 @@ Perintah :
 			try:
 				wikipedia.set_lang('id')
 				v=wikipedia.page(perintah[1])
-				return 'judul : '+v.title+'\nsumber : '+v.url+'\n\n'+v.content
+				return 'judul : '+v.title+'\nsumber : '+v.url+'\n\n'+v.summary
 			except:
 				return 'yg anda cari di wikipedia ,tidak ada'
 		elif perintah[0] in ['ReverseIpLookup','reverseiplookup']: #ip
