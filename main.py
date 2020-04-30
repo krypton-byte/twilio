@@ -25,12 +25,8 @@ def balasan():
 				balas.message('error')
 				return str(balas)
 			else:
-				for i in js['data']:
-					if i['subtype'] == 'mp4' and i['type'] == 'video':
-						url.append('mime: %s/%s\nkualitas: %s\nurl: %s\n'%(i['type'],i['subtype'],i['res'], i['url']))
-				ff=('judul: %s\n'%(js['judul'])+''.join(url))
-				print(ff)
-				balas.message('di tutup')
+				md = balas.message(js['judul'])
+				md.media(js['data'][0]['url'])
 				return str(balas)
 	elif perintah[0].lower() in ['yt2mp3','ytmp3']:
 		if perintah[1]:
