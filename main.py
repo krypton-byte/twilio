@@ -147,12 +147,9 @@ Perintah :
 '''
 			return arg
 		elif perintah[0].lower() == 'wikipedia':
-			try:
-				wikipedia.set_lang('id')
-				v=wikipedia.page(perintah[1])
-				return 'judul : '+v.title+'\nsumber : '+v.url+'\n\n'+v.summary
-			except:
-				return 'yg anda cari di wikipedia ,tidak ada'
+			wikipedia.set_lang('id')
+			v=wikipedia.page(' '.join(perintah[1:]))
+			return 'judul : %s\nsumber : %s \n   %s\n\npencarian lainnya : %s'%(v.title,v.url,v.summary,'\n   ~ '.join(wikipedia.search(perintah[1:])))
 		elif perintah[0] in ['ReverseIpLookup','reverseiplookup']: #ip
 			return requests.get(f'https://api.hackertarget.com/reverseiplookup/?q={perintah[1]}').text
 		elif perintah[0] in ['HttpHeader','httpheader']: #url
