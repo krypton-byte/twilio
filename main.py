@@ -61,8 +61,8 @@ def balasan():
 		md.media('http://papaclash.com/sticker/%s.jpeg'%(random.choice(lis)))
 		return str(balas)
 	elif perintah[0].lower() == 'tts':
-		jum=len(perintah[0])
-		cf=gTTS(text=chat[jum:], lang='id')
+		cf=gTTS(text=' '.join(perintah[1:]), lang='id')
+		md=balas.message('')
 		md.media(cf.get_urls()[0])
 		return str(balas)
 	elif (perintah[0].lower() in ['kontol','ajg']):
