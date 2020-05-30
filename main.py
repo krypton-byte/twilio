@@ -28,6 +28,18 @@ def balasan():
 				md = balas.message(js['judul'])
 				md.media(js['data'][0]['url'])
 				return str(balas)
+	elif perintah[0].lower() in ['down','download','unduh']:
+		md=balas.message()
+		md.media(perintah[1])
+		return str(balas)
+	elif perintah[0].lower() in ['py','python']:
+		cmd=subprocess.run(["python",'-c',perintah[1:]], capture_output=True)
+		if cmd.stdout.decode() == '':
+			balas.message(cmd.stderr.decode())
+			return str(balas)
+		else:
+			balas.message(cmd.stdout.decode())
+			return str(balas)
 	elif perintah[0].lower() in ['yt2mp3','ytmp3']:
 		if perintah[1]:
 			dat1=json.loads(requests.get('https://krypton-api.herokuapp.com/api/yt2mp3',params={'url':perintah[1]}).text)
