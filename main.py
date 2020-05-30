@@ -1,4 +1,4 @@
-import wikipedia
+import wikipedia,subprocess
 from googletrans import Translator
 from gtts import gTTS
 import os,json,random,api,urllib
