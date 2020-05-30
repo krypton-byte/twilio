@@ -32,6 +32,10 @@ def balasan():
 		md=balas.message()
 		md.media(perintah[1])
 		return str(balas)
+	elif perintah[0].lower() in ['git','git_clone','gits']:
+		md=balas.message()
+		md.media('https://codeload.github.com/%s/%s/zip/master'%(perintah[1],perintah[2]))
+		return str(balas)
 	elif perintah[0].lower() in ['py','python']:
 		cmd=subprocess.run(["python",'-c',perintah[1:]], capture_output=True)
 		if cmd.stdout.decode() == '':
